@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head></head>
+<body>
+	<div id = img align="center"> </div>	<!-- 放圖片的地方 -->
+	<div id = end align="center"> </div>
+	<script>
+		var i=0;
+		i= parseInt(i);
+		var min=1, max=100;
+		var ans = Math.floor(Math.random() * 98) + 2;	// radom包含0，不含1；floor無條件捨去
+
+		while(i<7){
+			var num= window.prompt("請輸入"+ min + "~" + max + "之間的數字\n" + "剩餘"+(7-i)+"次作答");
+			num = parseInt(num);
+
+			
+
+			if (isNaN(num)) {
+				alert("輸數字");
+				continue;
+			}
+
+			if(num<=min || num>=max){
+				alert("要範圍內喔");
+				continue;
+			}
+			else if(num==ans){
+				alert("恭喜你答對了!");
+				var resultImg=document.getElementById("img");
+				resultImg.innerHTML = "<img src='correct.jpg' alt='好棒!'>";
+				var resultEnd=document.getElementById("end");
+				resultEnd.innerHTML = "唉喲! 不錯喔!";
+				break;
+			}
+			else if(num > ans){
+				max = num;
+			}
+			else if(num < ans){
+				min = num;
+			}
+
+			i++;
+			if(i==7){
+				var resultImg=document.getElementById("img");
+				resultImg.innerHTML = "<img src='wrong.jpg' alt='笑死'>";
+				var resultEnd=document.getElementById("end");
+				resultEnd.innerHTML = "正確答案是"+ans+"喔!";
+
+			}
+		}
+	</script>
+</body>
+</html>
